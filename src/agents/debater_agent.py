@@ -30,16 +30,20 @@ class NormalDebater:
     def generate_argument(self,COMPETITION_PROCESS,phase,debate_history):
         prompt = self.build_prompt(COMPETITION_PROCESS,phase,debate_history)
         print(f"Waiting ai generate {phase} arguement.\n")
-        response = ai_call(self.model,prompt)
+        ##response = ai_call(self.model,prompt)
         print(f"{phase} arguement generate done.\n")
-        return response
+        return "a"
         
 class ReflexionDebater(NormalDebater):
+        def __init__(self,topic,stance,model):
+            super().__init__(topic,stance,model)
+            self.reflexion_memory = []
+
         def build_prompt(self,COMPETITION_PROCESS,phase,debate_history,reflexion_memory):
             if len(reflexion_memory) == 0 :
                 reflexion_prompt = ""
-            else 
-                reflexion_prompt = "Self-Reflection & Feedback (Reflexion):\n "
+            else :
+                reflexion_prompt = "Self-Reflection & Feedback (Reflexion):\n"
                 reflexion_prompt = reflexion_prompt + "\n".join(reflexion_memory) + "\n"
                 reflexion_prompt = reflexion_prompt + "Before delivering your statement, please review the history of reflections and refine your debate strategy accordingly.\n"
 
@@ -60,11 +64,13 @@ class ReflexionDebater(NormalDebater):
                     "Please begin your statement:"
                     ]
             prompt = "\n".join(sections)
-        return prompt
+            return prompt
 
         def generate_argument(self,COMPETITION_PROCESS,phase,debate_history,reflexion_memory):
             prompt = self.build_prompt(COMPETITION_PROCESS,phase,debate_history,reflexion_memory)
-            print(f"Waiting ai generate {phase} arguement.\n")
-            response = ai_call(self.model,prompt)
+            print(f"Waiting ai generate {phase} arguement.d\n")
+            print(prompt)
+            ##response = ai_call(self.model,prompt)
             print(f"{phase} arguement generate done.\n")
-            return response
+            ##return response
+            return "b"
