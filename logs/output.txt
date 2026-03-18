@@ -1,4 +1,21 @@
-Next debate
+==debate==
+
+
+Proponent Opening :
+a
+Opponent Opening :
+a
+Proponent Rebuttal :
+a
+Opponent Rebuttal :
+a
+Proponent Closing :
+a
+Opponent Closing :
+a
+==debate==
+opponent
+1. dummy reflexion
 Proponent Opening :
 a
 Opponent Opening :
@@ -11,7 +28,10 @@ Proponent Closing :
 a
 Opponent Closing :
 b
-Next debate
+==debate==
+opponent
+1. dummy reflexion
+2. dummy reflexion
 Proponent Opening :
 a
 Opponent Opening :
@@ -24,20 +44,11 @@ Proponent Closing :
 a
 Opponent Closing :
 b
-Next debate
-Proponent Opening :
-a
-Opponent Opening :
-b
-Proponent Rebuttal :
-a
-Opponent Rebuttal :
-b
-Proponent Closing :
-a
-Opponent Closing :
-b
-Next debate
+==debate==
+opponent
+1. dummy reflexion
+2. dummy reflexion
+3. dummy reflexion
 Proponent Opening :
 a
 Opponent Opening :

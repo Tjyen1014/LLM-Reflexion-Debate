@@ -30,6 +30,7 @@ class NormalDebater:
     def generate_argument(self,COMPETITION_PROCESS,phase,debate_history):
         prompt = self.build_prompt(COMPETITION_PROCESS,phase,debate_history)
         print(f"Waiting ai generate {phase} arguement.\n")
+        print(prompt)
         ##response = ai_call(self.model,prompt)
         print(f"{phase} arguement generate done.\n")
         return "a"

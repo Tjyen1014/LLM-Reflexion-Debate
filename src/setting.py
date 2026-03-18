@@ -1,11 +1,11 @@
 
 COMPETITION_PROCESS = [
-                        {"phase":"Proponent Opening","word-limit":"600 words","stance":"Proponent"},
-                        {"phase":"Opponent Opening","word-limit":"600 words","stance":"Opponent"},
-                        {"phase":"Proponent Rebuttal","word-limit":"600 words","stance":"Proponent"},
-                        {"phase":"Opponent Rebuttal","word-limit":"600 words","stance":"Opponent"},
-                        {"phase":"Proponent Closing","word-limit":"600 words","stance":"Proponent"},
-                        {"phase":"Opponent Closing","word-limit":"600 words","stance":"Opponent"}
+                        {"phase":"Proponent Opening","word-limit":"600 words","speaker_stance":"proponent"},
+                        {"phase":"Opponent Opening","word-limit":"600 words","speaker_stance":"opponent"},
+                        {"phase":"Proponent Rebuttal","word-limit":"600 words","speaker_stance":"proponent"},
+                        {"phase":"Opponent Rebuttal","word-limit":"600 words","speaker_stance":"opponent"},
+                        {"phase":"Proponent Closing","word-limit":"600 words","speaker_stance":"proponent"},
+                        {"phase":"Opponent Closing","word-limit":"600 words","speaker_stance":"opponent"}
                     ]
 NORMAL_DEBATER_MODEL =  "gpt-5-mini"
 REFLEXION_DEBATER_MODEL ="gpt-5-mini"
