@@ -9,5 +9,6 @@ COMPETITION_PROCESS = [
                     ]
 NORMAL_DEBATER_MODEL =  "gpt-5-mini"
 REFLEXION_DEBATER_MODEL ="gpt-5-mini"
+EVALUATOR_MODEL = "gpt-5-mini"
 TOPIC = "This House Would force all news organizations to be non profit(i.e. NHK, BBC, PBS)"
 REFLEXION_MEMORY_LENGTH = 3

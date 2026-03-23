@@ -1,12 +1,12 @@
-from agents.debater_agent import NormalDebater,ReflexionDebater
-from agents.reflexion_agent import generate_debate_reflexion
-from agents.evaluator import evaluate_losing_stance
+from src.agents.debater_agent import NormalDebater,ReflexionDebater
+from src.agents.reflexion_agent import generate_debate_reflexion
+from src.agents.evaluator import evaluate_debate_result
 from pathlib import Path
-from string_format import format_list_of_dictionary_to_string
-from setting import COMPETITION_PROCESS,NORMAL_DEBATER_MODEL,REFLEXION_DEBATER_MODEL,TOPIC,REFLEXION_MEMORY_LENGTH
+from src.string_format import format_list_of_dictionary_to_string
+from src.settings.configs import COMPETITION_PROCESS,NORMAL_DEBATER_MODEL,REFLEXION_DEBATER_MODEL,TOPIC,REFLEXION_MEMORY_LENGTH
 
-def update_reflexion_debater_reflexion_memory(debate_history,reflexion_debater):
-    new_reflexion_memory = generate_debate_reflexion(format_list_of_dictionary_to_string(debate_history),reflexion_debater)
+def update_reflexion_debater_reflexion_memory(debate_history,reflexion_debater,debate_judgment_rationale):
+    new_reflexion_memory = generate_debate_reflexion(format_list_of_dictionary_to_string(debate_history),reflexion_debater,debate_judgment_rationale)
     reflexion_debater.reflexion_memory.append(f"{len(reflexion_debater.reflexion_memory)+1}. {new_reflexion_memory}")
     return
 
@@ -53,7 +53,7 @@ def run_followup_debate(normal_debater,reflexion_debater):
     return followup_debate_history
 
 
-def reflexion_experiment(first_debate_history,loser_stance):
+def reflexion_experiment(first_debate_history,first_debate_judgment_rationale,loser_stance):
     last_debate_history = first_debate_history
     reflexion_debater = ReflexionDebater(TOPIC,loser_stance,REFLEXION_DEBATER_MODEL)
     if loser_stance == "proponent":
@@ -62,7 +62,7 @@ def reflexion_experiment(first_debate_history,loser_stance):
         normal_debater = NormalDebater(TOPIC,"proponent",NORMAL_DEBATER_MODEL)
 
     for i in range(REFLEXION_MEMORY_LENGTH):
-        update_reflexion_debater_reflexion_memory(last_debate_history,reflexion_debater)
+        update_reflexion_debater_reflexion_memory(last_debate_history,reflexion_debater,first_debate_judgment_rationale)
         last_debate_history = run_followup_debate(normal_debater,reflexion_debater)
         save_debate_results( last_debate_history,loser_stance,reflexion_debater.reflexion_memory)
         if evaluate_losing_stance(last_debate_history) !=  reflexion_debater.stance :
@@ -71,5 +71,9 @@ def reflexion_experiment(first_debate_history,loser_stance):
          
 first_debate_history = run_first_debate()
 save_debate_results(first_debate_history,"","")
-loser_stance = evaluate_losing_stance(first_debate_history)
-reflexion_experiment(first_debate_history,loser_stance)
+result = evaluate_debate_result(TOPIC,first_debate_history)
+loser_stance = result['losing_side']
+first_debate_judgment_rationale = result['reason_for_decision']
+print(first_debate_judgment_rationale)
+print(loser_stance)
+##reflexion_experiment(first_debate_history,first_debate_judgment_rationale,loser_stance)
