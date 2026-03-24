@@ -12,7 +12,6 @@ def build_evaluator_prompt(topic,debate_history):
             format_list_of_dictionary_to_string(debate_history),
             ]
     prompt = "\n".join(prompt_list)
-    print(prompt)
     return prompt
 
 def parse_evaluate_result(evaluate_result):
@@ -39,6 +38,7 @@ def evaluate_debate_result(topic,debate_history):
         evaluate_result = ai_call(EVALUATOR_MODEL,evaluator_prompt)
         try:
             evaluate_result_dic = parse_evaluate_result(evaluate_result)
+            print(evaluate_result_dic['losing_side'] + "\n")
             return  evaluate_result_dic
         except ValueError:
             print(f"parse failed, retry {attempt + 1}/{str(3)}")

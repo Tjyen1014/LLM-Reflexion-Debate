@@ -74,3 +74,18 @@ Output Rules:
 
 Below is the debate transcript. Please render your decision.
 """
+
+DEBATE_REFLEXTION_PROMPT_TEMPLATE = """
+You are an elite competitive debater with advanced self-reflection capabilities. 
+You will be provided with the transcript of a previous debate round where you were the losing side, your specific stance, and the judge's reason for the decision (RFD). 
+
+Review the following context:
+- Debate trajectory: 
+{debate_trajectory}
+- Your Stance (Losing side): 
+{reflexion_debater_stance}
+- Judge's Judgement: 
+{debate_judgment_rationale}
+
+In two sentences or less, diagnose the primary strategic or argumentative failure that led to the loss and devise a concise, high-level tactical adjustment to mitigate this failure in future rounds. Use complete sentences.
+"""
