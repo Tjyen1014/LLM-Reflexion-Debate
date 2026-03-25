@@ -1,3 +1,66 @@
+####
+NORMAL_DEBATER_PROMPT = """
+Role :
+You are a professional AI debate agent. You are currently participating in a formal debate competition with strict word count enforcement.
+
+Competition Format :
+{competition_process}
+
+Current Task :
+The Topic is {topic}. You are the {stance}. You are now in the {phase}.
+
+History Of Debate:
+{debate_history}
+
+Please deliver a high-quality argument. Strictly adhere to the 600-word limit. Any text exceeding this limit will be disregarded.
+The history above includes all arguments made prior to the current phase. Please analyze the opponent's logic, address their points, and deliver your {phase} argument.
+
+Output Rules:
+- Do NOT print the phase name, role name, speaker label, or any heading.
+- Do NOT start with prefixes such as "Opponent Rebuttal:", "Rebuttal:", "Closing Statement:", or similar labels.
+- Output only the argument body itself.
+- Do NOT repeat or restate the current phase.
+- Start directly with the first sentence of your
+- Write in normal prose paragraphs.
+- Do not insert a blank line after every sentence.
+- Do not use bullet points unless explicitly requested.
+
+Please begin your statement:
+"""
+########################################################################
+REFLEXION_DEBATER_PROMPT = """
+Role :
+You are a professional AI debate agent. You are currently participating in a formal debate competition with strict word count enforcement.
+
+Competition Format :
+{competition_process}
+
+Current Task :
+The Topic is {topic}. You are the {stance}. You are now in the {phase}.
+
+History Of Debate:
+{debate_history}
+
+Please deliver a high-quality argument. Strictly adhere to the 600-word limit. Any text exceeding this limit will be disregarded.
+The history above includes all arguments made prior to the current phase. Please analyze the opponent's logic, address their points, and deliver your {phase} argument.
+
+Self-Reflection & Feedback (Reflexion):
+{reflexion_memory}
+Before delivering your statement, please review the history of reflections and refine your debate strategy accordingly.
+
+Output Rules:
+- Do NOT print the phase name, role name, speaker label, or any heading.
+- Do NOT start with prefixes such as "Opponent Rebuttal:", "Rebuttal:", "Closing Statement:", or similar labels.
+- Output only the argument body itself.
+- Do NOT repeat or restate the current phase.
+- Start directly with the first sentence of your
+- Write in normal prose paragraphs.
+- Do not insert a blank line after every sentence.
+- Do not use bullet points unless explicitly requested.
+
+Please begin your statement:
+"""
+#######################################################################
 EVALUATOR_ROLE_PROMPT = "Role: You are a professional debate judge. Please evaluate the debate by strictly following the judge paradigm below."
 
 JUDGE_PARADIGM = """
@@ -44,6 +107,7 @@ I reward debaters who do the following well:
 
 Ultimately, I vote for the side that gives me the clearest and most persuasive account of why they win the most important clashes in the debate.
 """
+EVALUATOR_TASK_PROMPT =  "Task: The topic of this debate is: {topic}. Based on the actual clash in the debate regarding this specific topic—including argumentation, rebuttal, weighing, comparison, and extension—determine the winner and loser of the round."
 
 EVALUATOR_INSTRUCTION_PROMPT = """
 Instructions:
@@ -75,6 +139,10 @@ Output Rules:
 Below is the debate transcript. Please render your decision.
 """
 
+EVALUATOR_PROMPT = EVALUATOR_ROLE_PROMPT +  JUDGE_PARADIGM + EVALUATOR_TASK_PROMPT + EVALUATOR_INSTRUCTION_PROMPT + "{debate_trajectory}"
+
+########################################################################
+
 DEBATE_REFLEXTION_PROMPT_TEMPLATE = """
 You are an elite competitive debater with advanced self-reflection capabilities. 
 You will be provided with the transcript of a previous debate round where you were the losing side, your specific stance, and the judge's reason for the decision (RFD). 
@@ -87,5 +155,12 @@ Review the following context:
 - Judge's Judgement: 
 {debate_judgment_rationale}
 
+Output Rules:
+- Write in normal prose paragraphs.
+- Do not insert a blank line after every sentence.
+- Do not use bullet points unless explicitly requested.
+
 In two sentences or less, diagnose the primary strategic or argumentative failure that led to the loss and devise a concise, high-level tactical adjustment to mitigate this failure in future rounds. Use complete sentences.
 """
+########################################################################
+

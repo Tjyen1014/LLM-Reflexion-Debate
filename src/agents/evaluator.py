@@ -1,17 +1,11 @@
-from src.settings.prompts import EVALUATOR_ROLE_PROMPT,JUDGE_PARADIGM,EVALUATOR_INSTRUCTION_PROMPT
+from src.settings.prompts import EVALUATOR_PROMPT
 from src.settings.configs import EVALUATOR_MODEL
 from src.llm.client import ai_call
 from src.string_format import  format_list_of_dictionary_to_string
 import re
+
 def build_evaluator_prompt(topic,debate_history):
-    prompt_list = [
-            EVALUATOR_ROLE_PROMPT,
-            JUDGE_PARADIGM,
-            f"Task: The topic of this debate is: '{topic}'. Based on the actual clash in the debate regarding this specific topic—including argumentation, rebuttal, weighing, comparison, and extension—determine the winner and loser of the round.",### task
-            EVALUATOR_INSTRUCTION_PROMPT,
-            format_list_of_dictionary_to_string(debate_history),
-            ]
-    prompt = "\n".join(prompt_list)
+    prompt = EVALUATOR_PROMPT.format(topic = topic,debate_trajectory=format_list_of_dictionary_to_string(debate_history))
     return prompt
 
 def parse_evaluate_result(evaluate_result):

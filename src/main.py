@@ -15,8 +15,9 @@ def save_debate_results(debate_history,loser_stance,reflexion_memory):
     output_file.parent.mkdir(parents=True, exist_ok=True)
     with open("logs/output.txt", "a") as f:
         f.write("==debate==\n")
-        f.write(loser_stance + "\n")
-        f.write("\n".join(reflexion_memory) + "\n")
+        if loser_stance != "" :
+            f.write(loser_stance + "\n")
+            f.write("\n".join(reflexion_memory) + "\n")
         f.write(format_list_of_dictionary_to_string(debate_history))
         f.close()
     return
