@@ -7,9 +7,8 @@ COMPETITION_PROCESS = [
                         {"phase":"Proponent Closing","word-limit":"300 words","speaker_stance":"proponent"},
                         {"phase":"Opponent Closing","word-limit":"300 words","speaker_stance":"opponent"}
                     ]
-NORMAL_DEBATER_MODEL =  "gpt-5-mini"
-REFLEXION_DEBATER_MODEL ="gpt-5-mini"
-EVALUATOR_MODEL = "gpt-5-mini"
-REFLEXION_MODEL = "gpt-5-mini"
-TOPIC = "This House Would force all news organizations to be non profit(i.e. NHK, BBC, PBS)"
+NORMAL_DEBATER_MODEL =  "gpt-5-2025-08-07"
+REFLEXION_DEBATER_MODEL ="gpt-5-mini-2025-08-07"
+EVALUATOR_MODEL = "gpt-5-2025-08-07"
+REFLEXION_MODEL = "gpt-5-mini-2025-08-07"
 REFLEXION_MEMORY_LENGTH = 3
