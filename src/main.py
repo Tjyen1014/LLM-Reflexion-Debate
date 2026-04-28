@@ -91,7 +91,7 @@ def reflexion_experiment(first_debate_history,debate_judgment_rationale,loser_st
 
 with open("src/topics_dataset.txt","r") as f:
     lines = f.readlines()
-for i in range(2,15):
+for i in range(22,50):
     TOPIC = lines[i].strip()
     print(TOPIC + "\n")
     RESULT_JSON = {
