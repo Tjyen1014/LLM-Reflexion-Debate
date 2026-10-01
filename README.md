@@ -35,9 +35,13 @@ Experiment Runner: a module for connecting and managing the overall experiment p
 
 4. Current Status
 
-Current status: project initialization
+Current status: 
+Experiments on 100 debate topics have been completed. Number of initial losers that won after reflection:
+- GPT-5 mini vs GPT-5 mini (single judge): 72 / 100
+- GPT-5 nano (reflecting side) vs GPT-5 mini: 13 / 100
+- GPT-5 mini vs GPT-5 mini (three-judge majority vote): 91 / 100
 
-Next steps: local environment setup and first API call test
+Ongoing work: developing quantitative methods to evaluate answer quality in open-ended reasoning.
 
 5. Roadmap
 
