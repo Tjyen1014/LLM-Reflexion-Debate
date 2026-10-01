@@ -45,14 +45,14 @@ Ongoing work: developing quantitative methods to evaluate answer quality in open
 
 5. Roadmap
 
-Phase 1: Environment setup
+Phase 1: Environment setup (Completed)
 
-Phase 2: API call testing
+Phase 2: API call testing  (Completed)
 
-Phase 3: Simple debate prototype
+Phase 3: Simple debate prototype  (Completed)
 
-Phase 4: Add human judgment and test the full debate-reflection workflow
+Phase 4: Add human judgment and test the full debate-reflection workflow  (Completed)
 
-Phase 5: Add multiple topics and multi-round experiments
+Phase 5: Add multiple topics and multi-round experiments  (Completed)
 
-Phase 6: Add AI judging / automated evaluation
+Phase 6: Add AI judging / automated evaluation  (Completed)
